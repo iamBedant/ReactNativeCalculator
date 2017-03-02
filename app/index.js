@@ -41,6 +41,9 @@ export default class Dictionary extends Component {
                   <View style={Style.containerMiddleTwo}>
                       {this._renderInputOperations()}
                   </View>
+                  <View style={Style.containerMiddleThree}>
+
+                  </View>
                 </View>
             </View>
         );
@@ -144,11 +147,6 @@ export default class Dictionary extends Component {
             case 'DEL':
                 this.setState(this.initialState);
                     break;
-
-            // case 'c':
-            //     this.setState({inputValue: 0});
-            //     break;
-
         }
     }
 

@@ -56,11 +56,15 @@ var Style = StyleSheet.create({
         flexDirection: 'row'
     },
     containerMiddleTwo: {
-      flex: 1,
+      flex: 4,
       backgroundColor: '#636363',
     },
+    containerMiddleThree: {
+      flex: 1,
+      backgroundColor: '#1DE9B6',
+    },
     containerMiddleOne: {
-      flex: 3,
+      flex: 12,
       backgroundColor: '#434343',
     },
 });
