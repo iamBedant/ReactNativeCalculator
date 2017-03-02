@@ -32,7 +32,12 @@ export default class Dictionary extends Component {
                     <Text style={Style.displayText}>{this.state.inputValue}</Text>
                 </View>
                 <View style={Style.inputContainer}>
-                    {this._renderInputButtons()}
+                  <View style={Style.containerMiddleOne}>
+                      {this._renderInputButtons()}
+                  </View>
+                  <View style={Style.containerMiddleTwo}>
+                      {this._renderInputOperations()}
+                  </View>
                 </View>
             </View>
         );
@@ -41,6 +46,23 @@ export default class Dictionary extends Component {
     _renderInputButtons() {
 
         let views = inputButtons.map((row, idx) => {
+            let inputRow = row.map((buttonVal, columnIdx) => {
+                return <InputButton
+                            value={buttonVal}
+                            highlight={this.state.selectedSymbol === buttonVal}
+                            onPress={this._onInputButtonPressed.bind(this, buttonVal)}
+                            key={'butt-' + columnIdx} />;
+            });
+
+            return <View style={Style.inputRow} key={'row-' + idx}>{inputRow}</View>;
+        });
+
+        return views;
+    }
+
+    _renderInputOperations() {
+
+        let views = inputOperations.map((row, idx) => {
             let inputRow = row.map((buttonVal, columnIdx) => {
                 return <InputButton
                             value={buttonVal}
@@ -101,7 +123,7 @@ export default class Dictionary extends Component {
                 });
                 break;
 
-            case 'ce':
+            case 'DEL':
                 this.setState(this.initialState);
                     break;
 
@@ -117,9 +139,16 @@ export default class Dictionary extends Component {
 
 
 const inputButtons = [
-    [1, 2, 3, '/'],
-    [4, 5, 6, '*'],
-    [7, 8, 9, '-'],
-    [0, '.', '=', '+'],
-    ['c', 'ce']
+    [7, 8, 9],
+    [4, 5, 6],
+    [1, 2, 3],
+    ['.',0, '=']
+];
+
+const inputOperations = [
+    ['DEL'],
+    ['/'],
+    ['*'],
+    ['-'],
+    ['+']
 ];

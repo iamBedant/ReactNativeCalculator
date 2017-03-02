@@ -9,12 +9,12 @@ var Style = StyleSheet.create({
 
     displayContainer: {
         flex: 2,
-        backgroundColor: '#193441',
+        backgroundColor: '#FFFFFF',
         justifyContent: 'center'
     },
 
     displayText: {
-        color: 'white',
+        color: '#DDDDDD',
         fontSize: 38,
         fontWeight: 'bold',
         textAlign: 'right',
@@ -22,8 +22,9 @@ var Style = StyleSheet.create({
     },
 
     inputContainer: {
-        flex: 8,
-        backgroundColor: '#3E606F'
+        flex: 3,
+        flexDirection: 'row',
+        backgroundColor: '#434343'
     },
 
     inputButton: {
@@ -34,9 +35,6 @@ var Style = StyleSheet.create({
         borderColor: '#91AA9D'
     },
 
-    inputButtonHighlighted: {
-        backgroundColor: '#193441'
-    },
 
     inputButtonText: {
         fontSize: 22,
@@ -47,7 +45,15 @@ var Style = StyleSheet.create({
     inputRow: {
         flex: 1,
         flexDirection: 'row'
-    }
+    },
+    containerMiddleTwo: {
+      flex: 1,
+      backgroundColor: '#636363',
+    },
+    containerMiddleOne: {
+      flex: 3,
+      backgroundColor: '#434343',
+    },
 });
 
 export default Style;
