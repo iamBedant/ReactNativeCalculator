@@ -9,16 +9,25 @@ var Style = StyleSheet.create({
 
     displayContainer: {
         flex: 2,
+        elevation: 8,
         backgroundColor: '#FFFFFF',
         justifyContent: 'center'
     },
 
     displayText: {
-        color: '#DDDDDD',
-        fontSize: 38,
-        fontWeight: 'bold',
+        color: '#000000',
+        fontSize: 58,
+        fontWeight: 'normal',
         textAlign: 'right',
-        padding: 20
+        padding: 10
+    },
+
+    displayTextResult: {
+        color: '#6d6d6d',
+        fontSize: 38,
+        fontWeight: 'normal',
+        textAlign: 'right',
+        padding: 10
     },
 
     inputContainer: {

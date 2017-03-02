@@ -19,6 +19,8 @@ export default class Dictionary extends Component {
         this.initialState = {
             previousInputValue: 0,
             inputValue: 0,
+            inputString :'',
+            result:'',
             selectedSymbol: null
         };
 
@@ -29,7 +31,8 @@ export default class Dictionary extends Component {
         return (
             <View style={Style.rootContainer}>
                 <View style={Style.displayContainer}>
-                    <Text style={Style.displayText}>{this.state.inputValue}</Text>
+                    <Text style={Style.displayText}>{this.state.inputString}</Text>
+                    <Text style={Style.displayTextResult}>{this.state.result}</Text>
                 </View>
                 <View style={Style.inputContainer}>
                   <View style={Style.containerMiddleOne}>
@@ -78,6 +81,9 @@ export default class Dictionary extends Component {
     }
 
     _onInputButtonPressed(input) {
+      this.setState({
+          inputString: this.state.inputString +input
+      });
         switch (typeof input) {
             case 'number':
                 return this._handleNumberInput(input);
@@ -94,7 +100,31 @@ export default class Dictionary extends Component {
         });
     }
 
+
+    _calculateResult(){
+      let symbol = this.state.selectedSymbol,
+          inputValue = this.state.inputValue,
+          previousInputValue = this.state.previousInputValue;
+
+      if (!symbol) {
+          return;
+      }
+
+      this.setState({
+          previousInputValue: 0,
+
+          inputString : eval(previousInputValue + symbol + inputValue),
+          inputValue: eval(previousInputValue + symbol + inputValue),
+          result :eval(previousInputValue + symbol + inputValue),
+          selectedSymbol: null
+      });
+    }
+
     _handleStringInput(str) {
+
+      this.setState({
+          result: ''
+      });
         switch (str) {
             case '/':
             case '*':
@@ -108,28 +138,16 @@ export default class Dictionary extends Component {
                 break;
 
             case '=':
-                let symbol = this.state.selectedSymbol,
-                    inputValue = this.state.inputValue,
-                    previousInputValue = this.state.previousInputValue;
-
-                if (!symbol) {
-                    return;
-                }
-
-                this.setState({
-                    previousInputValue: 0,
-                    inputValue: eval(previousInputValue + symbol + inputValue),
-                    selectedSymbol: null
-                });
+                this._calculateResult();
                 break;
 
             case 'DEL':
                 this.setState(this.initialState);
                     break;
 
-            case 'c':
-                this.setState({inputValue: 0});
-                break;
+            // case 'c':
+            //     this.setState({inputValue: 0});
+            //     break;
 
         }
     }

@@ -12,9 +12,6 @@ var Style = StyleSheet.create({
         fontWeight: 'normal',
         color: 'white'
     },
-    inputButtonHighlighted: {
-        backgroundColor: '#193441'
-    },
 
 });
 export default Style
